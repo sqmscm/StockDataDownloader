@@ -23,5 +23,6 @@ jobs:
     - name: Run app
       env:
         CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
+        API_KEY: ${{ secrets.API_KEY }}
       run: |
         python main.py
