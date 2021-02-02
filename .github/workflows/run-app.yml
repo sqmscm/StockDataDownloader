@@ -26,9 +26,6 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run app
       env:
-        SERVER: ${{ secrets.SERVER }}
-        DATABASE: ${{ secrets.DATABASE }}
-        USER: ${{ secrets.USER }}
-        PASSWORD: ${{ secrets.PASSWORD }}
+        CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
       run: |
         python main.py
