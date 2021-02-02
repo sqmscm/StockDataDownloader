@@ -7,10 +7,10 @@ if __name__ == '__main__':
     # user      用户名
     # password  密码
     # database  数据库名称
-    server = 'stock8903.database.windows.net'
-    database = 'stock'
-    user = 'qiming'
-    password = '12345678@Gatech'
+    server = os.environ['SERVER']
+    database = os.environ['DATABASE']
+    user = os.environ['USER']
+    password = os.environ['PASSWORD']
     log.info(f'Trying to connect {server}')
     try:
         conn = pymssql.connect(server, user, password, database)  # using username + password
