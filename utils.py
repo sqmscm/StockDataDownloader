@@ -3,7 +3,7 @@ import csv
 import time
 import datetime
 import random
-
+from config import api_key
 
 def download_all(conn, logger):
     """
@@ -40,7 +40,7 @@ def download_intraday_extended(conn, logger, slice='year1month1'):
     :return: None
     """
     # 下载地址
-    url_pattern = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol={}&interval=5min&slice={}&adjusted=true&apikey=8X20WDQGP22OU1PN"
+    url_pattern = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol={}&interval=5min&slice={}&adjusted=true&apikey=" + api_key
     Symbol = 'UVXY'
     path_root = 'stocks/data/'
     logger.info(f'Start downloading slice {slice}')
