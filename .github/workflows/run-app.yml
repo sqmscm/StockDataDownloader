@@ -3,6 +3,7 @@ name: Update Stock Database
 on:
   schedule:
     - cron: "0 5 * * *"  # scheduled at 05:00 (UTC) everyday
+  workflow_dispatch:
 
 jobs:
   build:
