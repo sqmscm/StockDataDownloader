@@ -1,7 +1,5 @@
 # Project
 .idea/
-stocks/data/
-stocks/log/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
