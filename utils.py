@@ -94,7 +94,7 @@ def download_intraday_extended(conn, logger, slice='year1month1'):
             # logger.debug(curDate)
             # 取出上次的数据日期
             cursor0 = conn.cursor()
-            cursor0.execute('select max(timestamp) from IntradayQuotes where Symbol = %s;', (Symbol))
+            cursor0.execute('select max(timestamp) from IntradayQuotes where Symbol = ?;', Symbol)
             result0 = cursor0.fetchall()
             cursor0.close()
             oldDate = result0[0][0] if result0[0][0] else None
@@ -109,7 +109,7 @@ def download_intraday_extended(conn, logger, slice='year1month1'):
                     if oldDate and newDate <= oldDate:
                         logger.info(f'Imported {i} new records.')
                         break
-                    cursor2.execute("INSERT INTO IntradayQuotes VALUES (%s,%s,%s,%s,%s,%s,%s)", (
+                    cursor2.execute("INSERT INTO IntradayQuotes VALUES (?,?,?,?,?,?,?)", (
                         Symbol, one_line[0], one_line[1], one_line[2], one_line[3], one_line[4], one_line[5]))
                 else:
                     logger.info(f'Imported {i + 1} new records.')
@@ -117,7 +117,7 @@ def download_intraday_extended(conn, logger, slice='year1month1'):
 
             # 更新curStocks表
             cursor3 = conn.cursor()
-            cursor3.execute("delete from curStocks where Symbol = (%s)", (Symbol))
+            cursor3.execute("delete from curStocks where Symbol = ?", Symbol)
             cursor3.close()
 
             conn.commit()
